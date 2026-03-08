@@ -53,12 +53,12 @@
 
                 <div class="form-group">
                     <label for="message">Message About Me</label>
-                    <textarea id="message" name="message" rows="15" placeholder="Write your memory here... (Minimum 2000 words)" required></textarea>
+                    <textarea id="message" name="message" rows="15" placeholder="Write your memory here... (Minimum 600 words)" required></textarea>
                     <div class="word-counter">
-                        <span id="wordCount">0</span> / 2000 words minimum
+                        <span id="wordCount">0</span> / 600 words minimum
                     </div>
                     <p class="validation-error" id="wordError" style="display: none;">
-                        ⚠️ Message must contain at least 2000 words.
+                        ⚠️ Message must contain at least 600 words.
                     </p>
                 </div>
 
@@ -90,3 +90,4 @@
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
