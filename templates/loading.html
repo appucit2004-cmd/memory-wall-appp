@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading | Digital Memory Wall</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="loading-page">
+    <div class="loading-container">
+        <div class="loading-logo">
+            <span class="logo-letter" style="--i: 0">D</span>
+            <span class="logo-letter" style="--i: 1">i</span>
+            <span class="logo-letter" style="--i: 2">g</span>
+            <span class="logo-letter" style="--i: 3">i</span>
+            <span class="logo-letter" style="--i: 4">t</span>
+            <span class="logo-letter" style="--i: 5">a</span>
+            <span class="logo-letter" style="--i: 6">l</span>
+            <span class="logo-letter space" style="--i: 7"></span>
+            <span class="logo-letter" style="--i: 8">M</span>
+            <span class="logo-letter" style="--i: 9">e</span>
+            <span class="logo-letter" style="--i: 10">m</span>
+            <span class="logo-letter" style="--i: 11">o</span>
+            <span class="logo-letter" style="--i: 12">r</span>
+            <span class="logo-letter" style="--i: 13">y</span>
+            <span class="logo-letter space" style="--i: 14"></span>
+            <span class="logo-letter" style="--i: 15">W</span>
+            <span class="logo-letter" style="--i: 16">a</span>
+            <span class="logo-letter" style="--i: 17">l</span>
+            <span class="logo-letter" style="--i: 18">l</span>
+        </div>
+        <p class="loading-subtitle">A place for cherished memories</p>
+        <div class="loading-progress">
+            <div class="loading-bar"></div>
+        </div>
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+        </div>
+    </div>
+    <script>
+        // Redirect to landing page after loading
+        setTimeout(() => {
+            window.location.href = '/home';
+        }, 3500);
+    </script>
+</body>
+</html>

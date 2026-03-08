@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Wall | Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <div class="gradient-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="gradient-mesh"></div>
+    </div>
+
+    <nav class="navbar dashboard-nav">
+        <a href="/home" class="nav-brand">Digital Memory Wall</a>
+        <div class="nav-actions">
+            <form class="search-form" action="/dashboard" method="GET">
+                <input type="text" name="search" placeholder="Search memories..." value="{{ search }}" class="search-input">
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+            <a href="/logout" class="nav-link logout-link">Logout</a>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Private Memory Wall</h1>
+            <p>{{ memories|length }} memories shared with you</p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% if memories %}
+        <div class="memories-grid">
+            {% for memory in memories %}
+            <article class="memory-card glass-card" data-aos="fade-up">
+                <div class="memory-card-header">
+                    <div class="memory-photo">
+                        <img src="{{ memory.photo }}" alt="{{ memory.name }}">
+                    </div>
+                    <div class="memory-meta">
+                        <h3>{{ memory.name }}</h3>
+                        <time>{{ memory.created_at }}</time>
+                    </div>
+                    <form action="/delete-memory/{{ memory.id }}" method="POST" class="delete-form" onsubmit="return confirm('Are you sure you want to delete this memory?');">
+                        <button type="submit" class="delete-btn" title="Delete memory">🗑️</button>
+                    </form>
+                </div>
+                <div class="memory-message">
+                    {{ memory.message }}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state glass-card">
+            <div class="empty-icon">📭</div>
+            <h2>No memories yet</h2>
+            <p>{% if search %}No memories match your search.{% else %}When people submit memories, they'll appear here.{% endif %}</p>
+        </div>
+        {% endif %}
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

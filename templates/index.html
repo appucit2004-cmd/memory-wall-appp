@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Memory Wall | Share Your Memories</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="landing-page">
+    <div class="gradient-bg">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+      <div class="gradient-mesh"></div>
+    </div>
+
+    <nav class="navbar">
+      <a href="/home" class="nav-brand">Digital Memory Wall</a>
+      <a href="/admin-login" class="nav-link admin-link">Admin</a>
+    </nav>
+
+    <main class="hero-section">
+      <div class="hero-content fade-in">
+        <h1 class="hero-title">
+          <span class="title-line">Digital</span>
+          <span class="title-line gradient-text">Memory Wall</span>
+        </h1>
+        <p class="hero-description">
+          A private space where friends and loved ones can share their cherished
+          memories and heartfelt messages. Every story matters. Every memory is
+          precious.
+        </p>
+        <!--<p class="hero-note">
+                ✨ Your submissions are private — only you and the recipient can access them.
+            </p>-->
+        <a href="/submit" class="cta-button">
+          <span>Write About Me</span>
+          <svg
+            class="btn-arrow"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+      <div class="floating-cards">
+        <div class="float-card card-1">💭</div>
+        <div class="float-card card-2">✨</div>
+        <div class="float-card card-3">❤️</div>
+      </div>
+    </main>
+
+    <footer class="landing-footer">
+      <p>Share your memories with love</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>

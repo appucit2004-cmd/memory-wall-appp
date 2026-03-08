@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Memory | Digital Memory Wall</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="submit-page">
+    <div class="gradient-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="gradient-mesh"></div>
+    </div>
+
+    <nav class="navbar">
+        <a href="/home" class="nav-brand">Digital Memory Wall</a>
+        <a href="/home" class="nav-link">← Back</a>
+    </nav>
+
+    <main class="submit-container">
+        <div class="submit-card glass-card">
+            <h1 class="submit-title">Share Your Memory</h1>
+            <p class="submit-subtitle">Write a heartfelt message. Minimum 2000 words required.</p>
+
+            <form id="memoryForm" class="memory-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="photo">Your Photo</label>
+                    <div class="photo-upload-area" id="photoUploadArea">
+                        <input type="file" id="photo" name="photo" accept="image/*" required hidden>
+                        <div class="upload-placeholder" id="uploadPlaceholder">
+                            <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="17 8 12 3 7 8"/>
+                                <line x1="12" y1="3" x2="12" y2="15"/>
+                            </svg>
+                            <span>Click to upload your photo</span>
+                            <small>PNG, JPG, GIF, WEBP (max 16MB)</small>
+                        </div>
+                        <div class="image-preview" id="imagePreview" style="display: none;">
+                            <img id="previewImg" src="" alt="Preview">
+                            <button type="button" class="remove-preview" id="removePreview">×</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message About Me</label>
+                    <textarea id="message" name="message" rows="15" placeholder="Write your memory here... (Minimum 2000 words)" required></textarea>
+                    <div class="word-counter">
+                        <span id="wordCount">0</span> / 2000 words minimum
+                    </div>
+                    <p class="validation-error" id="wordError" style="display: none;">
+                        ⚠️ Message must contain at least 2000 words.
+                    </p>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Submit Memory</span>
+                    <span class="btn-loading" style="display: none;">
+                        <span class="loading-dots"></span>
+                    </span>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="success-content">
+            <div class="success-checkmark">
+                <svg viewBox="0 0 52 52">
+                    <circle class="check-circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="check-path" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
+            </div>
+            <h2>Thank You!</h2>
+            <p>Your memory has been submitted successfully.</p>
+            <a href="/home" class="success-btn">Return Home</a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
